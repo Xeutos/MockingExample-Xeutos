@@ -57,4 +57,16 @@ class ShoppingCartTest {
 
         assertThat(cart.calculateTotalPrice()).isEqualTo(BigDecimal.valueOf(300));
     }
+
+    @Test
+    void calculateTotalPriceWhenDiscountIsAppliedShouldReturnCorrectPrice(){
+        ShoppingCart cart = new ShoppingCart();
+        Product product1 = new Product(BigDecimal.valueOf(200));
+        Product product2 = new Product(BigDecimal.valueOf(100));
+
+        cart.addProduct(product1);
+        cart.addProduct(product2);
+
+        assertThat(cart.calculateDiscountedTotalPrice(BigDecimal.valueOf(80))).isEqualTo(BigDecimal.valueOf(240.0));
+    }
 }

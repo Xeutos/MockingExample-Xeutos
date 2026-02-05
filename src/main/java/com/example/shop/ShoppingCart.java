@@ -1,6 +1,7 @@
 package com.example.shop;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Function;
@@ -32,5 +33,11 @@ public class ShoppingCart {
     public BigDecimal calculateTotalPrice() {
         Function<Product, BigDecimal> totalMapper = Product::getPrice;
         return products.stream().map(totalMapper).reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public BigDecimal calculateDiscountedTotalPrice(BigDecimal discountPercentage) {
+        BigDecimal discount = discountPercentage.divide(BigDecimal.valueOf(100),1, RoundingMode.HALF_EVEN);
+        BigDecimal price = calculateTotalPrice();
+        return price.multiply(discount);
     }
 }
