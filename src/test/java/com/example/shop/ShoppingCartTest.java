@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class ShoppingCartTest {
     
@@ -17,5 +18,12 @@ class ShoppingCartTest {
         cart.addProduct(product);
 
         assertThat(cart.getProducts()).isEqualTo(expectedSet);
+    }
+
+    @Test
+    void addProductShouldThrowExceptionWhenProductIsNull(){
+        ShoppingCart cart = new ShoppingCart();
+
+        assertThatThrownBy(() -> cart.addProduct(null));
     }
 }
