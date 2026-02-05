@@ -20,4 +20,8 @@ public class ShoppingCart {
     public Set<Product> getProducts() {
         return products;
     }
+
+    public void removeProduct(Product product) {
+        products.remove(product);
+    }
 }

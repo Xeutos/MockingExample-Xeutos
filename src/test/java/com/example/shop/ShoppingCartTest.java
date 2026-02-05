@@ -26,4 +26,15 @@ class ShoppingCartTest {
 
         assertThatThrownBy(() -> cart.addProduct(null));
     }
+
+    @Test
+    void removeProductShouldRemoveProductFromCart(){
+        ShoppingCart cart = new ShoppingCart();
+        Product product = new Product();
+
+        cart.addProduct(product);
+        cart.removeProduct(product);
+
+        assertThat(cart.getProducts().isEmpty()).isTrue();
+    }
 }
