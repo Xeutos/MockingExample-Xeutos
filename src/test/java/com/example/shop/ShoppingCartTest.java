@@ -37,4 +37,11 @@ class ShoppingCartTest {
 
         assertThat(cart.getProducts().isEmpty()).isTrue();
     }
+
+    @Test
+    void removeProductShouldThrowExceptionIfProductIsNull(){
+        ShoppingCart cart = new ShoppingCart();
+
+        assertThatThrownBy(() -> cart.removeProduct(null));
+    }
 }
