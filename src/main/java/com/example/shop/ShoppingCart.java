@@ -1,7 +1,9 @@
 package com.example.shop;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Function;
 
 public class ShoppingCart {
 
@@ -25,5 +27,10 @@ public class ShoppingCart {
         if (product == null)
             throw new IllegalArgumentException("Product cannot be null");
         products.remove(product);
+    }
+
+    public BigDecimal calculateTotalPrice() {
+        Function<Product, BigDecimal> totalMapper = Product::getPrice;
+        return products.stream().map(totalMapper).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }
