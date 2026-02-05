@@ -116,7 +116,7 @@ class BookingSystemTest {
     }
 
     @Test
-    void cancelBookingShouldThrowExceptionIfBookingIdIsNull(){
+    void cancelBookingShouldThrowExceptionIfBookingIdIsNull() {
         var exception = assertThrows(IllegalArgumentException.class,
                 () -> bookingSystem.cancelBooking(null));
 
@@ -124,14 +124,14 @@ class BookingSystemTest {
     }
 
     @Test
-    void cancelBookingShouldReturnFalseWhenBookingDoesNotExist(){
+    void cancelBookingShouldReturnFalseWhenBookingDoesNotExist() {
         var cancelled = bookingSystem.cancelBooking("2");
 
         assertThat(cancelled).isFalse();
     }
 
     @Test
-    void cancelBookingShouldThrowExceptionIfBookingIsStartedOrFinished(){
+    void cancelBookingShouldThrowExceptionIfBookingIsStartedOrFinished() {
         var room = new Room("1", "Room 1");
         var booking = new Booking("1", "1", LocalDateTime.now(), LocalDateTime.now().plusHours(1));
         room.addBooking(booking);
@@ -145,7 +145,7 @@ class BookingSystemTest {
     }
 
     @Test
-    void cancelBookingShouldReturnTrueWhenBookingIdExists(){
+    void cancelBookingShouldReturnTrueWhenBookingIdExists() {
         var room = new Room("1", "Room 1");
         var booking = new Booking("1", "1", LocalDateTime.now(), LocalDateTime.now().plusHours(1));
 
