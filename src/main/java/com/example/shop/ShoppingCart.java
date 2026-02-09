@@ -9,8 +9,10 @@ import java.util.function.Function;
 public class ShoppingCart {
 
     private final HashSet<Product> products;
+    private final Inventory inventory;
 
-    public ShoppingCart() {
+    public ShoppingCart(Inventory inventory) {
+        this.inventory = inventory;
         this.products = new HashSet<>();
     }
 
@@ -18,6 +20,7 @@ public class ShoppingCart {
         if (product == null)
             throw new IllegalArgumentException("Product cannot be null");
         products.add(product);
+        inventory.reduceStock();
     }
 
     public Set<Product> getProducts() {
@@ -28,6 +31,7 @@ public class ShoppingCart {
         if (product == null)
             throw new IllegalArgumentException("Product cannot be null");
         products.remove(product);
+
     }
 
     public BigDecimal calculateTotalPrice() {
