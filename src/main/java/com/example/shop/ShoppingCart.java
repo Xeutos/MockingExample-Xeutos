@@ -31,7 +31,7 @@ public class ShoppingCart {
         if (product == null)
             throw new IllegalArgumentException("Product cannot be null");
         products.remove(product);
-
+        inventory.increaseStock();
     }
 
     public BigDecimal calculateTotalPrice() {

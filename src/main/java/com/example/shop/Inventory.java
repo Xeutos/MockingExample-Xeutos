@@ -15,4 +15,8 @@ public class Inventory {
     public void reduceStock() {
         stock -= 1;
     }
+
+    public void increaseStock() {
+        stock += 1;
+    }
 }

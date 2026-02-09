@@ -79,4 +79,14 @@ class ShoppingCartTest {
 
         assertThat(inventory.getStock()).isEqualTo(1);
     }
+
+    @Test
+    void inventoryStockShouldIncreaseWhenRemovingProductToCart(){
+        Product product = new Product(BigDecimal.ONE);
+
+        cart.addProduct(product);
+        cart.removeProduct(product);
+
+        assertThat(inventory.getStock()).isEqualTo(2);
+    }
 }
